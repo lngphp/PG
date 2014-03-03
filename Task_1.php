@@ -20,11 +20,6 @@ class Task_1
         $this->min = min($range);
         $this->max = max($range);
 
-        $this->checks = array(
-            3 => 'Fizz'
-            , 5 => 'Buzz'
-        );
-
         $strlen = strlen(implode(' ', $this->checks));
 
         for ($i = $this->min; $i < $this->max + 1; $i++) { 
