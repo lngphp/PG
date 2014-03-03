@@ -10,12 +10,22 @@ class Task_1
         );
     }
 
-    public function Task_1_1(array $range)
+    public function Task_1_2(array $range)
     {
         $this->checkRange($range);
         $this->setRange($range);
         
         $output = '';
+
+        $this->min = min($range);
+        $this->max = max($range);
+
+        $this->checks = array(
+            3 => 'Fizz'
+            , 5 => 'Buzz'
+        );
+
+        $strlen = strlen(implode(' ', $this->checks));
 
         for ($i = $this->min; $i < $this->max + 1; $i++) { 
 
@@ -24,17 +34,21 @@ class Task_1
             foreach ($this->checks as $key => $value) {
                 
                 if ($i % $key === 0) {
-                    $tmp[$key] = true;
-                    $output .= $value;                      
+                    $tmp[] = true;
+                    $output .= $value.' ';                      
                 }
 
             }
 
-            if (count($tmp) === 0) {
-                $output .= $i;
-            }
+            $result = substr(trim($output), $strlen - $strlen * 2);
 
-            $output .= ' ';
+            if ($result === implode(' ', $this->checks)
+                || $result === implode(' ', array_reverse($this->checks))) {
+                $output .= 'Bazz ';
+                $i++;
+            } elseif (count($tmp) === 0) {
+                $output .= $i .' ';
+            }
 
         }
 
@@ -58,4 +72,4 @@ class Task_1
 
 $Task_1 = new Task_1();
 
-echo $Task_1->Task_1_1(array(4, 11));
+echo $Task_1->Task_1_2(array(4, 11));
