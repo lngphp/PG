@@ -17,9 +17,6 @@ class Task_1
         
         $output = '';
 
-        $this->min = min($range);
-        $this->max = max($range);
-
         $strlen = strlen(implode(' ', $this->checks));
 
         for ($i = $this->min; $i < $this->max + 1; $i++) { 
